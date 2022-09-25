@@ -27,6 +27,11 @@ section {
   text-decoration: underline;
 }
 
+.footer-fixed {
+	position: fixed;
+	bottom: 0;
+}
+
 .footer-distributed{
 	background: #666;
 	box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12);
@@ -177,9 +182,9 @@ section {
 }
 
 @media (max-width: 880px) {
-
 	.footer-distributed{
 		font: bold 14px sans-serif;
+		padding: 10px;
 	}
 
 	.footer-distributed .footer-left,
@@ -189,6 +194,7 @@ section {
 		width: 100%;
 		margin-bottom: 40px;
 		text-align: center;
+		margin-bottom: 0;
 	}
 
 	.footer-distributed .footer-center i{

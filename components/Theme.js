@@ -13,8 +13,8 @@ const theme = createTheme({
             styleOverrides: {
                 colorPrimary: {
                     backgroundColor: 'rgba(0,0,0,0.5)'
-                }
-            }
+                },
+            },
         }
     }
 });

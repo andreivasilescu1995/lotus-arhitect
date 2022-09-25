@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { useState } from "react";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Divider from "@mui/material/Divider";
@@ -13,12 +13,16 @@ import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 
+import Link from "next/link";
+import { useRouter } from "next/router";
+
 const drawerWidth = 240;
 const navItems = ["Projects", "About", "Contact"];
 
 function Header(props) {
     const { window } = props;
-    const [mobileOpen, setMobileOpen] = React.useState(false);
+    const [mobileOpen, setMobileOpen] = useState(false);
+    const router = useRouter();
 
     const handleDrawerToggle = () => {
         setMobileOpen(!mobileOpen);
@@ -27,14 +31,14 @@ function Header(props) {
     const drawer = (
         <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
             <Typography variant="h6" sx={{ my: 2 }}>
-                MUI
+                [LOGO] LOTUS ARHITECT
             </Typography>
             <Divider />
             <List>
                 {navItems.map((item) => (
                     <ListItem key={item} disablePadding>
                         <ListItemButton sx={{ textAlign: "center" }}>
-                            <ListItemText primary={item} />
+                            <Link href={"/" + item.toLowerCase()}>{item}</Link>
                         </ListItemButton>
                     </ListItem>
                 ))}
@@ -47,7 +51,10 @@ function Header(props) {
 
     return (
         <Box sx={{ display: "flex" }}>
-            <AppBar component="nav">
+            <AppBar
+                component="nav"
+                position={router.pathname === "/" ? "absolute" : "relative"}
+            >
                 <Toolbar>
                     <IconButton
                         color="inherit"
@@ -71,7 +78,9 @@ function Header(props) {
                     <Box sx={{ display: { xs: "none", sm: "block" } }}>
                         {navItems.map((item) => (
                             <Button key={item} sx={{ color: "#fff" }}>
-                                {item}
+                                <Link href={"/" + item.toLowerCase()}>
+                                    {item}
+                                </Link>
                             </Button>
                         ))}
                     </Box>
@@ -84,7 +93,7 @@ function Header(props) {
                     open={mobileOpen}
                     onClose={handleDrawerToggle}
                     ModalProps={{
-                        keepMounted: true, // Better open performance on mobile.
+                        keepMounted: true,
                     }}
                     sx={{
                         display: { xs: "block", sm: "none" },
