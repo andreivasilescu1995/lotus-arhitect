@@ -1,15 +1,17 @@
 import React from "react";
 import classNames from "classnames";
 import { useRouter } from "next/router";
+import isMobile from "../hooks/isMobile";
 
 export default function Footer() {
     const router = useRouter();
+    const isMob = isMobile();
 
     return (
         <footer
             className={classNames({
                 "footer-distributed": true,
-                "footer-fixed": ["/contact"].includes(router.pathname),
+                "footer-fixed": !isMob && ["/contact"].includes(router.pathname),
             })}
         >
             <div className="footer-left">

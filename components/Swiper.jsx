@@ -2,14 +2,13 @@ import React from "react";
 import Image from "next/image";
 import { Autoplay, EffectFade } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
-import HoverSlide from "./HoverSlide";
+import HovearableItem from "./HoverableItem";
 import "swiper/css";
 
 export default function SwiperHome({ images }) {
     return (
         <Swiper
             modules={[Autoplay, EffectFade]}
-            effect="fade"
             spaceBetween={50}
             slidesPerView={1}
             loop
@@ -19,9 +18,9 @@ export default function SwiperHome({ images }) {
         >
             {images.map((e, i) => (
                 <SwiperSlide key={i}>
-                    <HoverSlide>
+                    <HovearableItem>
                         <Image layout="fill" src={e.src} alt={e.alt} />
-                    </HoverSlide>
+                    </HovearableItem>
                 </SwiperSlide>
             ))}
         </Swiper>

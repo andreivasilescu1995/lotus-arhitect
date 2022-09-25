@@ -200,5 +200,41 @@ section {
 	.footer-distributed .footer-center i{
 		margin-left: 0;
 	}
+}
 
+.hovearable img {
+	width: 100%;
+	-webkit-transition: .3s ease-in-out;
+	transition: .3s ease-in-out;
+}
+
+.blur {
+	filter: blur(5px);
+	-webkit-filter: blur(5px);
+	-webkit-transition: .5s ease-in-out;
+	transition: .5s ease-in-out;
+	filter: brightness(80%);
+}
+
+.hoverContainer {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	padding: 20px;
+}
+
+.hoverText {
+	color: #fff;
+}
+
+.hoverText.title {
+	font-weight: 600;
+	font-size: 20px;
+}
+
+.hoverText.subTitle {
+	font-weight: 500;
+	font-size: 15px;
 }
