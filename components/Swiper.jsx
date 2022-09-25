@@ -5,7 +5,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import HoverSlide from "./HoverSlide";
 import "swiper/css";
 
-export default ({ images }) => {
+export default function SwiperHome({ images }) {
     return (
         <Swiper
             modules={[Autoplay, EffectFade]}
@@ -14,7 +14,7 @@ export default ({ images }) => {
             slidesPerView={1}
             loop
             autoplay={{
-                delay: 1000 + (Math.random() * (2000 - 500)),
+                delay: 1000 + Math.random() * (2000 - 500),
             }}
         >
             {images.map((e, i) => (
@@ -26,4 +26,4 @@ export default ({ images }) => {
             ))}
         </Swiper>
     );
-};
+}
