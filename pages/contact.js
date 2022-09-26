@@ -6,13 +6,19 @@ import TextareaAutosize from '@mui/material/TextareaAutosize';
 import Button from '@mui/material/Button';
 import styles from '../styles/Contact.module.css';
 
+import { Link } from 'next/router';
+
 export default function Contact() {
     const [name, setName] = useState();
     const [email, setEmail] = useState();
     const [message, setMessage] = useState();
 
     const sendEmail = () => {
-        console.log(name, email, message);
+        // console.log(name, email, message);
+    }
+
+    const openMaps = () => {
+
     }
 
     return (
@@ -20,12 +26,14 @@ export default function Contact() {
             <Grid container spacing={2}>
                 <Grid item xs={12} md={6}>
                     <div className={styles.addressContainer}>
-                        <Image
-                            src="/address.png"
-                            alt="Lotus Arhitect address"
-                            objectFit="cover"
-                            fill
-                        />
+                        <a href={`https://www.google.com/maps/search/?api=1&query=44.174309,28.637552`} target="blank">
+                            <Image
+                                src="/address.png"
+                                alt="Lotus Arhitect address"
+                                objectFit="cover"
+                                fill
+                            />
+                        </a>
                     </div>
                 </Grid>
                 <Grid item xs={12} md={6}>
