@@ -1,6 +1,6 @@
 import React from "react";
 import Image from "next/image";
-import { Autoplay, EffectFade } from "swiper";
+import { Autoplay } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 import HovearableItem from "./HoverableItem";
 import "swiper/css";
@@ -8,7 +8,7 @@ import "swiper/css";
 export default function SwiperHome({ images }) {
     return (
         <Swiper
-            modules={[Autoplay, EffectFade]}
+            modules={[Autoplay]}
             spaceBetween={50}
             slidesPerView={1}
             loop
