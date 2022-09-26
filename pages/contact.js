@@ -6,7 +6,7 @@ import TextareaAutosize from '@mui/material/TextareaAutosize';
 import Button from '@mui/material/Button';
 import styles from '../styles/Contact.module.css';
 
-export default function contact() {
+export default function Contact() {
     const [name, setName] = useState();
     const [email, setEmail] = useState();
     const [message, setMessage] = useState();

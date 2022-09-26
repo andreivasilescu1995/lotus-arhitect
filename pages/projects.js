@@ -6,7 +6,7 @@ import ImageListItem from '@mui/material/ImageListItem';
 import { projects } from "../constants";
 import HoverElement from '../components/HoverElement';
 
-export default function MasonryImageList() {
+export default function Projects() {
     return (
         <Box p={1}>
             <ImageList variant="masonry" cols={3} gap={8}>
