@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Divider from "@mui/material/Divider";
@@ -11,17 +11,27 @@ import MenuIcon from "@mui/icons-material/Menu";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
+import MenuItem from "@mui/material/MenuItem";
+import Select from "@mui/material/Select";
+import ReactCountryFlag from "react-country-flag";
 
 import Link from "next/link";
 import { useRouter } from "next/router";
-
-const drawerWidth = 240;
-const navItems = ["Projects", "About", "Contact"];
+import { translations } from "../translations";
+import { capitalize } from "../utils";
+import { drawerWidth } from "../constants";
 
 function Header(props) {
     const { window } = props;
+    const { locale, pathname } = useRouter();
     const [mobileOpen, setMobileOpen] = useState(false);
-    const router = useRouter();
+    const [lang, setLang] = useState(locale);
+
+    const navItems = [
+        translations[locale].projects,
+        translations[locale].contact,
+        translations[locale].about,
+    ];
 
     const handleDrawerToggle = () => {
         setMobileOpen(!mobileOpen);
@@ -39,7 +49,9 @@ function Header(props) {
                 {navItems.map((item) => (
                     <ListItem key={item} disablePadding>
                         <ListItemButton sx={{ textAlign: "center" }}>
-                            <Link href={"/" + item.toLowerCase()}>{item}</Link>
+                            <Link href={"/" + item.toLowerCase()}>
+                                {capitalize(item)}
+                            </Link>
                         </ListItemButton>
                     </ListItem>
                 ))}
@@ -50,11 +62,49 @@ function Header(props) {
     const container =
         window !== undefined ? () => window().document.body : undefined;
 
+    const LanguageSelector = () => (
+        <Select
+            autoWidth
+            disableUnderline
+            value={lang}
+            variant="standard"
+            defaultValue="gb"
+        >
+            <MenuItem value="en" onClick={() => setLang("en")}>
+                <Link href={pathname} locale={"en"}>
+                    <ReactCountryFlag
+                        style={{ fontSize: 40 }}
+                        countryCode="gb"
+                        aria-label="United States"
+                    />
+                </Link>
+            </MenuItem>
+            <MenuItem value="ro" onClick={() => setLang("ro")}>
+                <Link href={pathname} locale={"ro"}>
+                    <ReactCountryFlag
+                        style={{ fontSize: 40 }}
+                        countryCode="ro"
+                        aria-label="Romania"
+                    />
+                </Link>
+            </MenuItem>
+            <MenuItem value="tr" onClick={() => setLang("tr")}>
+                <Link href={pathname} locale={"tr"}>
+                    <ReactCountryFlag
+                        style={{ fontSize: 40 }}
+                        countryCode="tr"
+                        aria-label="Türkiye"
+                    />
+                </Link>
+            </MenuItem>
+        </Select>
+    );
+
     return (
         <Box sx={{ display: "flex" }}>
             <AppBar
                 component="nav"
-                position={router.pathname === "/" ? "absolute" : "relative"}
+                position={pathname === "/" ? "absolute" : "relative"}
             >
                 <Toolbar>
                     <IconButton
@@ -84,6 +134,14 @@ function Header(props) {
                                 </Link>
                             </Button>
                         ))}
+                        <LanguageSelector />
+                    </Box>
+                    <Box
+                        flex={1}
+                        justifyContent="flex-end"
+                        sx={{ display: { xs: "flex", sm: "none" } }}
+                    >
+                        <LanguageSelector />
                     </Box>
                 </Toolbar>
             </AppBar>

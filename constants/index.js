@@ -1,5 +1,4 @@
-export const footerDesktop = 610;
-export const footerMobile = 520;
+export const drawerWidth = 240;
 
 export const projects = [
     {

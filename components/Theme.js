@@ -15,6 +15,13 @@ const theme = createTheme({
                     backgroundColor: 'rgba(0,0,0,0.5)'
                 },
             },
+        },
+        MuiSelect: {
+            styleOverrides: {
+                select: {
+                    padding: "0!important"
+                }
+            }
         }
     }
 });
