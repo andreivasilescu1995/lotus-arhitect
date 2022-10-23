@@ -6,8 +6,6 @@ import TextareaAutosize from '@mui/material/TextareaAutosize';
 import Button from '@mui/material/Button';
 import styles from '../styles/Contact.module.css';
 
-import { Link } from 'next/router';
-
 export default function Contact() {
     const [name, setName] = useState();
     const [email, setEmail] = useState();
@@ -30,7 +28,6 @@ export default function Contact() {
                             <Image
                                 src="/address.png"
                                 alt="Lotus Arhitect address"
-                                objectFit="cover"
                                 fill
                             />
                         </a>

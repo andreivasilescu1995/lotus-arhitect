@@ -9,7 +9,7 @@ export const translations = {
     },
     ro: {
         hello: "hello ro",
-        projects: "Proiecte",
+        projects: "proiecte",
         contact: "contact",
         about: "despre",
         footerAbout: "despre companie",

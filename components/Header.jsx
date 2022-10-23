@@ -33,6 +33,22 @@ function Header(props) {
         translations[locale].about,
     ];
 
+    const translationToRoute = (route) => {
+        let str;
+        switch (route) {
+            case translations[locale].projects:
+                str = "/projects";
+                break;
+            case translations[locale].contact:
+                str = "/contact";
+                break;
+            case translations[locale].about:
+                str = "/about";
+                break;
+        }
+        return str;
+    };
+
     const handleDrawerToggle = () => {
         setMobileOpen(!mobileOpen);
     };
@@ -49,7 +65,7 @@ function Header(props) {
                 {navItems.map((item) => (
                     <ListItem key={item} disablePadding>
                         <ListItemButton sx={{ textAlign: "center" }}>
-                            <Link href={"/" + item.toLowerCase()}>
+                            <Link href={translationToRoute(item)}>
                                 {capitalize(item)}
                             </Link>
                         </ListItemButton>
@@ -129,7 +145,7 @@ function Header(props) {
                     <Box sx={{ display: { xs: "none", sm: "block" } }}>
                         {navItems.map((item) => (
                             <Button key={item} sx={{ color: "#fff" }}>
-                                <Link href={"/" + item.toLowerCase()}>
+                                <Link href={translationToRoute(item)}>
                                     {item}
                                 </Link>
                             </Button>
