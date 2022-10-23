@@ -5,6 +5,7 @@ import Link from "next/link";
 import isMobile from "../hooks/isMobile";
 import { translations } from "../translations";
 import { capitalize } from "../utils";
+import Logo from "../components/Logo";
 
 export default function Footer() {
     const { pathname, locale } = useRouter();
@@ -16,6 +17,22 @@ export default function Footer() {
         translations[locale].about,
     ];
 
+    const translationToRoute = (route) => {
+        let str;
+        switch (route) {
+            case translations[locale].projects:
+                str = "/projects";
+                break;
+            case translations[locale].contact:
+                str = "/contact";
+                break;
+            case translations[locale].about:
+                str = "/about";
+                break;
+        }
+        return str;
+    };
+
     return (
         <footer
             className={classNames({
@@ -24,17 +41,14 @@ export default function Footer() {
             })}
         >
             <div className="footer-left">
-                <h3>
-                    Company<span>logo</span>
-                </h3>
+                <Logo />
                 <p className="footer-links">
                     {navItems.map((e, i) => (
-                        <Link key={e} href={e}>
+                        <Link key={e} href={translationToRoute(e)}>
                             <a className={`link-${i + 1}`}>{capitalize(e)}</a>
                         </Link>
                     ))}
                 </p>
-                <p className="footer-company-name">Company Name © 2022</p>
             </div>
             <div className="footer-center">
                 <div>

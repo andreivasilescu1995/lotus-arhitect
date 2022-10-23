@@ -20,6 +20,7 @@ import { useRouter } from "next/router";
 import { translations } from "../translations";
 import { capitalize } from "../utils";
 import { drawerWidth } from "../constants";
+import Logo from "../components/Logo";
 
 function Header(props) {
     const { window } = props;
@@ -54,12 +55,11 @@ function Header(props) {
     };
 
     const drawer = (
-        <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
-            <Link href={"/"}>
-                <Typography variant="h6" sx={{ my: 2 }}>
-                    [LOGO] LOTUS ARHITECT
-                </Typography>
-            </Link>
+        <Box
+            onClick={handleDrawerToggle}
+            sx={{ textAlign: "center", bgcolor: "#8f2530" }}
+        >
+            <Logo mobile />
             <Divider />
             <List>
                 {navItems.map((item) => (
@@ -85,12 +85,13 @@ function Header(props) {
             value={lang}
             variant="standard"
             defaultValue="gb"
+            IconComponent={null}
         >
             <MenuItem value="en" onClick={() => setLang("en")}>
                 <Link href={pathname} locale={"en"}>
                     <ReactCountryFlag
                         style={{ fontSize: 40 }}
-                        countryCode="gb"
+                        countryCode="us"
                         aria-label="United States"
                     />
                 </Link>
@@ -140,7 +141,7 @@ function Header(props) {
                             display: { xs: "none", sm: "block" },
                         }}
                     >
-                        <Link href={"/"}>[LOGO] LOTUS ARHITECT</Link>
+                        <Logo />
                     </Typography>
                     <Box sx={{ display: { xs: "none", sm: "block" } }}>
                         {navItems.map((item) => (
@@ -175,6 +176,8 @@ function Header(props) {
                         "& .MuiDrawer-paper": {
                             boxSizing: "border-box",
                             width: drawerWidth,
+                            bgcolor: "#8f2530",
+                            color: "#fff",
                         },
                     }}
                 >
